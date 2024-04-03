@@ -1,8 +1,43 @@
-# React + Vite
+# FilmFolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# TechStack
 
-Currently, two official plugins are available:
+- React
+- JavaScript
+- Ant.Design
+- TanStack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# To Run Locally
+
+```
+git clone https://github.com/434huzaifa/FilmFolio
+```
+
+```
+cd FilmFolio
+```
+
+add .env.local
+
+```
+# Either live link or local link without last /
+VITE_BACK_END_URL=
+```
+
+```
+npm i
+```
+
+```
+npm run dev
+```
+
+enjoy
+
+Backend Repo: [https://github.com/434huzaifa/FilmFolio_Server](https://github.com/434huzaifa/FilmFolio_Server)
+
+Frontend Link: [https://film-folio-omega.vercel.app/](https://film-folio-omega.vercel.app/)
+
+Backend Link | Api documentation : [https://filmfolio-server.onrender.com/](https://filmfolio-server.onrender.com/)
+
+Admin Panel: [https://filmfolio-server.onrender.com/admin/](https://filmfolio-server.onrender.com/admin/)
