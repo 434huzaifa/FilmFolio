@@ -1,9 +1,10 @@
+import { Outlet } from "react-router-dom"
 
 function App() {
   return (
-    <>
-      <p>HI</p>
-    </>
+    <div className="min-h-[85vh]">
+      <Outlet></Outlet>
+    </div>
   )
 }
 

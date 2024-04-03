@@ -3,8 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { App } from "antd";
 import Login from "./Login";
+import Home from "./Home";
+import App from "./App";
 const qc = new QueryClient({
   defaultOptions: {
     queries: {
@@ -21,7 +22,10 @@ const router = createBrowserRouter([
     path:"/",
     element:<App></App>,
     children:[
-
+      {
+        path:"/",
+        element:<Home></Home>
+      }
     ],
   },
   {
