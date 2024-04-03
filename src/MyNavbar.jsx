@@ -1,5 +1,5 @@
 import { Avatar, Button, Popover } from "antd";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IoPersonSharp } from "react-icons/io5";
 const MyNavbar = () => {
     const user=JSON.parse(localStorage.getItem("user"))
@@ -24,14 +24,15 @@ const MyNavbar = () => {
   );
   return (
     <div className="flex justify-between border-b pb-2 pr-10 mb-2">
+      <Link to="/">
       <div className="flex gap-2 items-center">
         <img src="/star.png" alt="" className="size-6" />
         <p className="font-bold text-xl font-roboto-slab">FilmFolio</p>
       </div>
+      </Link>
       <div>
         <div className="flex gap-2">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/search">Search</NavLink>
         </div>
       </div>
       <div>

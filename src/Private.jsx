@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-const Priavate = ({children}) => {
+const Private = ({children}) => {
     const user=localStorage.getItem("user")
     if (user) {
         return children
@@ -8,4 +8,4 @@ const Priavate = ({children}) => {
     return <Navigate to="/login"></Navigate>
 };
 
-export default Priavate;
+export default Private;
