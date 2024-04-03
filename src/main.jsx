@@ -6,6 +6,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./Login";
 import Home from "./Home";
 import App from "./App";
+import Search from "./Search";
+import { Toaster } from "react-hot-toast";
 const qc = new QueryClient({
   defaultOptions: {
     queries: {
@@ -19,24 +21,29 @@ const qc = new QueryClient({
 });
 const router = createBrowserRouter([
   {
-    path:"/",
-    element:<App></App>,
-    children:[
+    path: "/",
+    element: <App></App>,
+    children: [
       {
-        path:"/",
-        element:<Home></Home>
-      }
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/search",
+        element: <Search></Search>,
+      },
     ],
   },
   {
-    path:"/login",
-    element:<Login></Login>
-  }
-]); 
+    path: "/login",
+    element: <Login></Login>,
+  },
+]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-      <QueryClientProvider client={qc}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
+    <Toaster position="top-right"></Toaster>
+    <QueryClientProvider client={qc}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );

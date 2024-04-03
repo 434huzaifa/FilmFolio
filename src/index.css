@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active{
+    text-decoration: underline;
+    color: blue;
+    font-weight: 600;
+}
