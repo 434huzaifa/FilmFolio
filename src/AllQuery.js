@@ -12,17 +12,7 @@ export const useAllMovies = () => {
   });
 };
 
-export const useSingleMovie = (id) => {
-  const caxios = useAxios();
-  return useQuery({
-    queryKey: ["singleMovie",id],
-    queryFn: async () => {
-      const res = await caxios.get(`/movie/${id}`);
-      return res.data;
-    },
-    gcTime:0
-  });
-};
+
 
 export const useMovieSearch=(query)=>{
     const caxios=useAxios();
@@ -36,13 +26,3 @@ export const useMovieSearch=(query)=>{
     })
 }
 
-export const useConfirmUser=(email,password)=>{
-    const caxios=useAxios()
-    return useQuery({
-        queryKey:[email],
-        queryFn:async ()=>{
-            const res= await caxios.get(`/user/?email=${email}&password=${password}`)
-            return res.data
-        }
-    })
-}
