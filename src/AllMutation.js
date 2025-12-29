@@ -11,7 +11,8 @@ export const useCreateMovie = () => {
   return useMutation({
     mutationFn: async ({name,genre,rating,release_date}) => {
         const res = await caxios.post("/movie/",{name,genre,rating,release_date})
-        return res.data
+        // Ensure response is an object, not an array
+        return (typeof res.data === 'object' && !Array.isArray(res.data)) ? res.data : {};
     },
     onSuccess:()=>{
         queryAllMovie.refetch()
@@ -27,7 +28,8 @@ export const useSingleMovie = (user_id) => {
   return useMutation({
     mutationFn: async (id) => {
       const res = await caxios.get(`/movie/${id}/?user_id=${user_id}`);
-      return res.data;
+      // Ensure response is an object
+      return (typeof res.data === 'object' && !Array.isArray(res.data)) ? res.data : {};
     },
     
   });
@@ -37,11 +39,14 @@ export const useConfirmUser=()=>{
     return useMutation({
         mutationFn:async ({email,password})=>{
             const res= await caxios.get(`/user/?email=${email}&password=${password}`)
-            return res.data
+            // Ensure response is an object
+            return (typeof res.data === 'object' && !Array.isArray(res.data)) ? res.data : {};
         },
         onSuccess:(data)=>{
-            toast.success("User found")
-            localStorage.setItem("user",JSON.stringify(data))
+            if (data && data.id) {
+                toast.success("User found")
+                localStorage.setItem("user",JSON.stringify(data))
+            }
         },
         onError:()=>{
             toast.error("User not found")
@@ -55,7 +60,8 @@ export const useCreateRating=()=>{
     return useMutation({
         mutationFn:async({user_id,movie_id,rating})=>{
             const res= await caxios.post("/rating/",{user_id,movie_id,rating})
-            return res.data
+            // Ensure response is an object
+            return (typeof res.data === 'object' && !Array.isArray(res.data)) ? res.data : {};
         },
         onSuccess:()=>{
             userQueryAllMovie.refetch()
@@ -72,7 +78,8 @@ export const useSingleReact=()=>{
     return useMutation({
         mutationFn:async (id)=>{
             const res = await caxios.get(`/rating/${id}/`)
-            return res.data
+            // Ensure response is an object
+            return (typeof res.data === 'object' && !Array.isArray(res.data)) ? res.data : {};
         }
     })
 }
@@ -83,7 +90,8 @@ export const useMovieSearch=()=>{
     return useMutation({
         mutationFn:async (query)=>{
             const res= await caxios.get(`/movie/search/?query=${query}&user_id=${user.id}`)
-            return res.data
+            // Ensure response is an array
+            return Array.isArray(res.data) ? res.data : [];
         },
         retry:0
     })

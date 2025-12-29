@@ -7,7 +7,9 @@ export const useAllMovies = (user_id,enable=true) => {
     queryKey: ["AllMovies"],
     queryFn: async () => {
       const res = await caxios.get(`/movie/?user_id=${user_id}`);
-      return res.data;
+      // Ensure response is an array
+      const data = Array.isArray(res.data) ? res.data : [];
+      return data;
     },
     enabled:enable
   });
